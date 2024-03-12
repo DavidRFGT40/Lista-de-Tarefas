@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::Lista de tarefas:::</title>
+    <style>
+
+        @font-face {
+            font-family: FontS;
+            src: url(Fonte/TattooMuseum.ttf);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #7998aa;
+        }
+
+        h1{
+
+            background: #7998aa;
+            border-radius: 20px;
+            box-shadow: 3px 4px 2px #1d2729;
+            padding: 0px 20px 0px 20px;
+            font-family: FontS;
+            color: #1d2729;
+        }
+
+        input{
+            
+        
+            border-radius: 30px;
+            width: 250px;
+            height: 15px;
+        }
+
+        button{
+            background-color: #1d2729;
+            color:#a3cbe2;
+            font-family: FontS;
+            border-radius: 30px;
+            width: 180px;
+            height: 21px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="taskInput" placeholder="Digite uma Tarefa">
+    <button onclick="addTask()">Adicionar Tarefa</button>
+    <ul id="taskList">
+
+    </ul>
+
+    <script>
+
+        function addTask(){
+            var taskInput = document.getElementById
+            ("taskInput");
+            var taskText = taskInput.value.trim();
+            if (taskText !=="") {
+                var taskList = document.getElementById("taskList");
+                var li = document.createElement("li");
+                li.className = "taskItem";
+                li.innerHTML = taskText + '<button onclick="removeTask(this)">Remover</button>';
+                taskList.appendChild(li);
+                taskInput.value = "";
+            } else {
+                alert("Por favor, insira uma tarefa válida.");
+                
+            }
+        }
+
+        function removeTask(button) {
+            var li = button.parentNode;
+            var ul = li.parentNode;
+            ul.removeChild(li);
+        }
+
+        document.getElementById("taskInput").addEventListener ("keypress", function (event) {
+            if(event.key === "Enter") {
+                addTask();
+            }
+        });
+
+
+    </script>
+</body>
+</html>
